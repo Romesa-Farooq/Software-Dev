@@ -41,9 +41,16 @@ def calculate_shipping_cost(country):
 
 def calculate_order_total(order):
     subtotal = calculate_items_subtotal(order)
-    discount_amount = calculate_member_discount(subtotal, order["member"])
+
+    discount_amount = calculate_member_discount(
+        subtotal,
+        order["member"]
+    )
+
     subtotal = subtotal - discount_amount
+
     shipping_cost = calculate_shipping_cost(order["country"])
+
     subtotal = subtotal + shipping_cost
 
     return subtotal
